@@ -9,8 +9,6 @@
 #include <cassert>
 #include <cstdint>
 
-namespace exe::tasks {
-
 class Mutex {
   using UniqueLock = std::unique_lock<Mutex>;
 
@@ -140,4 +138,3 @@ class Mutex {
   std::atomic<Locker*> head_{empty};
 };//mutex
 //////////////////////////////////////////////////////////////////////////////////
-}  // namespace exe::tasks
