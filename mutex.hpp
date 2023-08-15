@@ -24,13 +24,11 @@ class Mutex {
       return mutex_.TryLock();
     }
 
-    // NOLINTNEXTLINE
     bool await_suspend(std::experimental::coroutine_handle<> handle) {
       handle_ = handle;
       return mutex_.TryLockOrEnqueue(this);
     }
 
-    // NOLINTNEXTLINE
     UniqueLock await_resume() {
       return std::unique_lock(mutex_, std::adopt_lock);
     }
