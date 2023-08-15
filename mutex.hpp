@@ -20,9 +20,6 @@ class Mutex {
     explicit Locker(Mutex& mutex) : mutex_(mutex) {
     }
 
-    // Awaiter protocol
-
-    // NOLINTNEXTLINE
     bool await_ready() {
       return mutex_.TryLock();
     }
