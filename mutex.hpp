@@ -42,11 +42,11 @@ class Mutex {
   }
 
   // Asynchronous
-  auto ScopedLock() {
+  auto scoped_lock() {
     return Locker{*this};
   }
 
-  bool TryLock() {
+  bool try_lock() {
     return claim();
   }
 
@@ -60,7 +60,7 @@ class Mutex {
   // returns false if lock acquired
   // returns true if enqueued
   //to enqueue an awaiter means to weave into the lock-free stack of awaiters
-  bool TryLockOrEnqueue(Locker* locker) {
+  bool try_lock_or_enqueue(Locker* locker) {
 ////this works!!!
       for (;;) {
           ////attempt to claim mutex
